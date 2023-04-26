@@ -33,6 +33,7 @@ void free_args(char **args);
 int exit_shell(char *line, char **args, FILE *input_stream);
 char *get_command_path(char *command);
 void print_environment(void);
-
+int unset_environment_variable(char **args);
+int set_environment_variable(char **args);
 
 #endif /* SHELL_H */
