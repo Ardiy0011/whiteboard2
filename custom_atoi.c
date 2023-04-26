@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
  * custom_atoi - Converts a string to an integer.
- * @s: The string to be converted.
+ * @string: The string to be converted.
  * Return: The converted integer.
  */
 int custom_atoi(const char *string)
@@ -32,5 +32,5 @@ num = num * 10 + (*string - '0');
 string++;
 }
 
-return (sign * num);
+return (sign *num);
 }
