@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
-* custom_getline - reads input from a file descriptor and stores it 
+* custom_getline - reads input from a file descriptor and stores it
 * in a buffer.
 * Return: NULL.
 */
