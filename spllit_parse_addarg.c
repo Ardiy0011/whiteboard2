@@ -17,7 +17,7 @@ if (!tokens)
 fprintf(stderr, "allocation error\n");
 exit(EXIT_FAILURE);
 }
-token = strtok2(line, TOKEN_DELIMITERS);
+token = strtok2(line, TOKEN_DELIMITERS, &Tokenizer);
 while (token != NULL)
 {
 tokens[position] = token;
@@ -32,7 +32,7 @@ fprintf(stderr, "allocation error\n");
 exit(EXIT_FAILURE);
 }
 }
-token = strtok2(NULL, TOKEN_DELIMITERS);
+token = strtok2(line, TOKEN_DELIMITERS, &Tokenizer);
 }
 tokens[position] = NULL;
 return (tokens);
