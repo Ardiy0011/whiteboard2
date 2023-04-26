@@ -15,5 +15,63 @@ while (environ[i])
 {
 printf("%s\n", environ[i]);
 i++;
+}}
+
+
+
+/**
+ * Sets a new value for an existing environment variable, or creates a new
+ * environment variable if it does not exist.
+ * @param name The name of the environment variable to set.
+ * @param value The new value for the environment variable.
+ * @return 0 on success, -1 on failure.
+ */
+int set_environment_variable(char **args)
+{
+if (args[1] == NULL || args[2] == NULL)
+{
+fprintf(stderr, "setenv: Too few arguments\n");
+return (1);
 }
+if (args[3] != NULL)
+{
+fprintf(stderr, "setenv: Too many arguments\n");
+return (1);
+}
+
+if (setenv(args[1], args[2], 1) != 0)
+{
+perror("setenv");
+return (1);
+}
+return (0);
+}
+
+
+
+/**
+ * Removes an environment variable with the given name.
+ * @param name The name of the environment variable to remove.
+ * return: 0 on success, -1 on failure.
+ */
+int unset_environment_variable(char **args)
+{
+if (args[1] == NULL)
+{
+fprintf(stderr, "unsetenv: Too few arguments\n");
+return (1);
+}
+if (args[2] != NULL)
+{
+fprintf(stderr, "unsetenv: Too many arguments\n");
+return (1);
+}
+
+if (unsetenv(args[1]) != 0)
+{
+perror("unsetenv");
+return (1);
+}
+
+return (0);
 }
