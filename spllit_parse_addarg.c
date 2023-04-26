@@ -9,31 +9,49 @@
 */
 char **split_line(char *line)
 {
-int bufsize = TOKEN_BUFSIZE, position = 0;
-char **tokens = malloc(bufsize * sizeof(char *));
 char *token;
+char **tokens = malloc(sizeof(char*) * MAX_ARGS);
+
 if (!tokens)
 {
-fprintf(stderr, "allocation error\n");
+fprintf(stderr, "Allocation error\n");
 exit(EXIT_FAILURE);
 }
-token = strtok(line, TOKEN_DELIMITERS);
-while (token != NULL)
+
+int i = 0;
+Tokenizer state = {NULL, NULL};
+while ((token = strtok2(line, TOKEN_DELIMITERS, &state)) != NULL)
 {
-tokens[position] = token;
-position++;
-if (position >= bufsize)
+tokens[i] = token;
+i++;
+
+if (i >= MAX_ARGS)
 {
-bufsize += TOKEN_BUFSIZE;
-tokens = realloc(tokens, bufsize *sizeof(char *));
-if (!tokens)
-{
-fprintf(stderr, "allocation error\n");
+fprintf(stderr, "Too many arguments\n");
 exit(EXIT_FAILURE);
 }
 }
-token = strtok(NULL, TOKEN_DELIMITERS);
+tokens[i] = NULL;
+return tokens;
 }
-tokens[position] = NULL;
-return (tokens);
+char *strtok2(char *str, const char *delim, Tokenizer *state)
+{
+if (str != NULL)
+{
+state->last_str = str;
+} else if (state->last_token != NULL)
+{
+state->last_str = state->last_token + strlen(state->last_token) + 1;
+}
+else
+{
+return (NULL);
+}
+state->last_token = strchr(state->last_str, *delim);
+if (state->last_token != NULL)
+{
+*state->last_token = '\0';
+state->last_token++;
+}
+return (state->last_str);
 }
