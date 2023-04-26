@@ -5,6 +5,7 @@
  * including the name of the program itself.
  * @argv: an array of strings containing the arguments passed to the program
  * from the command line.
+ * Return: Always 0
  */
 int main(int argc, char **argv)
 {
@@ -12,9 +13,11 @@ char *input;
 char **args;
 int status;
 FILE *input_stream = stdin;
-if (argc > 1) {
+if (argc > 1)
+{
 input_stream = fopen(argv[1], "r");
-if (!input_stream) {
+if (!input_stream)
+{
 perror("Failed to open input file");
 exit(EXIT_FAILURE);
 }
