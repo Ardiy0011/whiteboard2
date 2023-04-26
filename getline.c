@@ -1,10 +1,9 @@
 #include "shell.h"
 /**
-* custom_getline - reads input from a file descriptor and stores it in a buffer.
-
+* custom_getline - reads input from a file descriptor and stores it 
+* in a buffer.
 * Return: NULL.
 */
-
 char *custom_getline(void)
 {
 static char buf[BUFSIZE];
