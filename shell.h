@@ -25,7 +25,6 @@ typedef struct info_s
         char *buffer;
         char **argv;
         size_t argc;
-        list_t *env;
         ssize_t read;
 } info_t;
 
