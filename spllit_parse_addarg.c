@@ -43,7 +43,7 @@ return (tokens);
 * used to split the string.
 * @state: Pointer to a Tokenizer struct that encapsulates the state of the
 * tokenizer.
-* Return: A pointer to the next token in the string, or NULL if there are 
+* Return: A pointer to the next token in the string, or NULL if there are
 * no more tokens.
 */
 char *strtok2(char *str, const char *delim, Tokenizer *state)
