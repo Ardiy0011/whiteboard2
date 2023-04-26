@@ -17,7 +17,7 @@
 #define BUFSIZE 1024
 #define MAX_LINE_LENGTH 1024
 #define MAX_INPUT_LENGTH 1024
-
+extern char **environ;
 #define MAX_ARGS 64
 
 typedef struct info_s
@@ -39,7 +39,7 @@ char **split_line(char *line);
 void free_args(char **args);
 int exit_shell(char *line, char **args, FILE *input_stream);
 char *get_command_path(char *command);
-void print_environment();
+void print_environment(void);
 
 
 #endif /* SHELL_H */
