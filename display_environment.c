@@ -18,9 +18,8 @@ i++;
 }}
 
 
-
 /**
- * set_environment_variable - Sets a new value for an existing environment 
+ * set_environment_variable - Sets a new value for an existing environment
  * variable, or creates a new environment variable if it does not exist.
  * @args: Array of arguments
  * Return: Always 0
