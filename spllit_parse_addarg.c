@@ -34,6 +34,15 @@ exit(EXIT_FAILURE);
 tokens[i] = NULL;
 return (tokens);
 }
+
+
+/**
+* strtok2 - Splits a string into an array of arguments.
+* @str: Pointer to a null-terminated string that contains the command line.
+* @delim: Pointer to a null-terminated string that contains the delimiters used to split the string.
+* @state: Pointer to a Tokenizer struct that encapsulates the state of the tokenizer.
+* Return: A pointer to the next token in the string, or NULL if there are no more tokens.
+*/
 char *strtok2(char *str, const char *delim, Tokenizer *state)
 {
 if (str != NULL)
