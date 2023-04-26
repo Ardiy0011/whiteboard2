@@ -14,9 +14,7 @@ while (1)
 prompt();
 input = read_input();
 args = split_line(input);
-if (strcmp(args[0], "exit") == 0)
-break;
-else if (strcmp(args[0], "env") == 0)
+if (strcmp(args[0], "env") == 0)
 {
 printf("Printing environment variables:\n");
 print_environment();
