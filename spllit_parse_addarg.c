@@ -10,7 +10,7 @@
 char **split_line(char *line)
 {
 char *token;
-char **tokens = malloc(sizeof(char*) * MAX_ARGS);
+char **tokens = malloc(sizeof(char *) * MAX_ARGS);
 
 if (!tokens)
 {
@@ -32,14 +32,15 @@ exit(EXIT_FAILURE);
 }
 }
 tokens[i] = NULL;
-return tokens;
+return (tokens);
 }
 char *strtok2(char *str, const char *delim, Tokenizer *state)
 {
 if (str != NULL)
 {
 state->last_str = str;
-} else if (state->last_token != NULL)
+}
+else if (state->last_token != NULL)
 {
 state->last_str = state->last_token + strlen(state->last_token) + 1;
 }
