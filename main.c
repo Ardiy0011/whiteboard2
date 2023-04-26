@@ -1,10 +1,7 @@
 #include "shell.h"
 /**
  * main - The entry point of the program.
- * @argc: the number of arguments passed to the program from the command line,
- * including the name of the program itself.
- * @argv: an array of strings containing the arguments passed to the program
- * from the command line.
+
  * Return: Always 0
  */
 int main(void)
