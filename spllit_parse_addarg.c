@@ -75,24 +75,3 @@ if (**saveptr != '\0')
 }
 return (token);
 }
-
-
-/**
- * execute_command - Executes a command in a new process.
- * @command: The command to be executed.
- * @args: An array of strings containing the command and its arguments.
- * @path: The PATH environment variable.
- * Return: None.
- */
-void execute_command(const char *command, char *const *args, const char *path)
-{
-char *exe_path = find_executable(command, path);
-if (!exe_path)
-{
-fprintf(stderr, "Error: command '%s' not found in PATH\n", command);
-return;
-}
-execv(exe_path, args);
-perror("Error");
-exit(EXIT_FAILURE);
-}

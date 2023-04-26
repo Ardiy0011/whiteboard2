@@ -1,6 +1,4 @@
 #include "shell.h"
-
-
 /**
  * find_executable - searches for the full path to an executable file in the
  * directories listed in the PATH environment variable.
@@ -41,4 +39,25 @@ token = strtok_r(NULL, ":", &saveptr);
 free(exe_path);
 free(path_copy);
 return (NULL);
+}
+
+
+/**
+ * execute_commd - Executes a command in a new process.
+ * @command: The command to be executed.
+ * @args: An array of strings containing the command and its arguments.
+ * @path: The PATH environment variable.
+ * Return: None.
+ */
+void execute_commd(const char *command, char *const *args, const char *path)
+{
+char *exe_path = find_executable(command, path);
+if (!exe_path)
+{
+fprintf(stderr, "Error: command '%s' not found in PATH\n", command);
+return;
+}
+execv(exe_path, args);
+perror("Error");
+exit(EXIT_FAILURE);
 }

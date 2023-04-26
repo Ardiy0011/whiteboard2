@@ -37,6 +37,6 @@ void print_environment(void);
 int unset_environment_variable(char **args);
 int set_environment_variable(char **args);
 char *strtok_r(char *str, const char *delim, char **saveptr);
-void execute_command(const char *command, char *const *args, const char *path);
+void execute_commd(const char *command, char *const *args, const char *path);
 
 #endif /* SHELL_H */
