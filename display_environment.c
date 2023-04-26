@@ -20,11 +20,10 @@ i++;
 
 
 /**
- * Sets a new value for an existing environment variable, or creates a new
- * environment variable if it does not exist.
- * @param name The name of the environment variable to set.
- * @param value The new value for the environment variable.
- * @return 0 on success, -1 on failure.
+ * set_environment_variable - Sets a new value for an existing environment 
+ * variable, or creates a new environment variable if it does not exist.
+ * @args: Array of arguments
+ * Return: Always 0
  */
 int set_environment_variable(char **args)
 {
@@ -50,9 +49,10 @@ return (0);
 
 
 /**
- * Removes an environment variable with the given name.
+ * unset_environment_variable - Removes an environment variable with the given name.
  * @param name The name of the environment variable to remove.
- * return: 0 on success, -1 on failure.
+ * @args: Array of arguments
+ * Return: Always 0
  */
 int unset_environment_variable(char **args)
 {
