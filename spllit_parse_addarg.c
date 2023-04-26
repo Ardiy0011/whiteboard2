@@ -9,23 +9,32 @@
 */
 char **split_line(char *line)
 {
-int i = 0;
+int bufsize = TOKEN_BUFSIZE, position = 0;
+char **tokens = malloc(bufsize * sizeof(char *));
 char *token;
-char **tokens = malloc(sizeof(char *) * MAX_ARGS);
-Tokenizer state = {NULL, NULL};
-
 if (!tokens)
 {
-fprintf(stderr, "Allocation error\n");
+fprintf(stderr, "allocation error\n");
 exit(EXIT_FAILURE);
 }
-
-while ((token = strtok2(line, TOKEN_DELIMITERS, &state)) != NULL)
+token = strtok2(line, TOKEN_DELIMITERS);
+while (token != NULL)
 {
-tokens[i] = token;
-i++;
+tokens[position] = token;
+position++;
+if (position >= bufsize)
+{
+bufsize += TOKEN_BUFSIZE;
+tokens = realloc(tokens, bufsize *sizeof(char *));
+if (!tokens)
+{
+fprintf(stderr, "allocation error\n");
+exit(EXIT_FAILURE);
 }
-tokens[i] = NULL;
+}
+token = strtok2(NULL, TOKEN_DELIMITERS);
+}
+tokens[position] = NULL;
 return (tokens);
 }
 
