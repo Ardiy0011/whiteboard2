@@ -47,10 +47,6 @@ if (strcmp(info.argv[0], "exit") == 0)
 break;
 else if (strcmp(info.argv[0], "env") == 0)
 print_environment();
-else if (strcmp(info.argv[0], "setenv") == 0)
-_mysetenv(&info);
-else if (strcmp(info.argv[0], "unsetenv") == 0)
-_myunsetenv(&info);
 else
 execute(&info);
 }
