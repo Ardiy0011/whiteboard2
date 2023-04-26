@@ -19,7 +19,8 @@
 #define MAX_INPUT_LENGTH 1024
 extern char **environ;
 #define MAX_ARGS 64
-
+#define MAX_PATH_LENGTH 1024
+#define MAX_COMMAND_LENGTH 512
 
 
 
@@ -36,5 +37,6 @@ void print_environment(void);
 int unset_environment_variable(char **args);
 int set_environment_variable(char **args);
 char *strtok_r(char *str, const char *delim, char **saveptr);
+void execute_command(const char *command, char *const *args, const char *path);
 
 #endif /* SHELL_H */

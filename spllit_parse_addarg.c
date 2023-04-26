@@ -38,6 +38,13 @@ return (tokens);
 }
 
 
+/**
+strtok_r - Tokenizes a string.
+@str: The string to be tokenized.
+@delim: The delimiter character.
+@saveptr: A pointer to a char pointer to maintain context between calls.
+Return: A pointer to the next token in the string.
+*/
 char *strtok_r(char *str, const char *delim, char **saveptr)
 {
 char *token;
@@ -66,6 +73,26 @@ if (**saveptr != '\0')
 **saveptr = '\0';
 (*saveptr)++;
 }
-
 return (token);
+}
+
+
+/**
+ * execute_command - Executes a command in a new process.
+ * @command: The command to be executed.
+ * @args: An array of strings containing the command and its arguments.
+ * @path: The PATH environment variable.
+ * Return: None.
+ */
+void execute_command(const char *command, char *const *args, const char *path)
+{
+char *exe_path = find_executable(command, path);
+if (!exe_path)
+{
+fprintf(stderr, "Error: command '%s' not found in PATH\n", command);
+return;
+}
+execv(exe_path, args);
+perror("Error");
+exit(EXIT_FAILURE);
 }
