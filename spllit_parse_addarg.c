@@ -39,16 +39,15 @@ return (tokens);
 
 
 /**
-strtok_r - Tokenizes a string.
-@str: The string to be tokenized.
-@delim: The delimiter character.
-@saveptr: A pointer to a char pointer to maintain context between calls.
-Return: A pointer to the next token in the string.
+* strtok_r - Tokenizes a string.
+* @str: The string to be tokenized.
+* @delim: The delimiter character.
+* @saveptr: A pointer to a char pointer to maintain context between calls.
+* Return: A pointer to the next token in the string.
 */
 char *strtok_r(char *str, const char *delim, char **saveptr)
 {
 char *token;
-
 if (str != NULL)
 {
 *saveptr = str;
