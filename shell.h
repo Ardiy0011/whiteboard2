@@ -39,5 +39,6 @@ int unset_environment_variable(char **args);
 int set_environment_variable(char **args);
 char *strtok_r(char *str, const char *delim, char **saveptr);
 void execute_commd(const char *command, char *const *args, const char *path);
+char *custom_getline(void);
 
 #endif /* SHELL_H */
