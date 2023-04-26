@@ -9,7 +9,7 @@
  */
 char *find_executable(const char *command, const char *path)
 {
-char *p, *token, *exe_path;
+char *token, *exe_path;
 char *path_copy = strdup(path);
 char *saveptr;
 if (!path_copy)
