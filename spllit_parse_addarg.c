@@ -11,14 +11,13 @@ char **split_line(char *line)
 {
 int bufsize = TOKEN_BUFSIZE, position = 0;
 char **tokens = malloc(bufsize * sizeof(char *));
-char *token;
-Tokenizer tokenizer = {0};
+char *token, *saveptr;
 if (!tokens)
 {
 fprintf(stderr, "allocation error\n");
 exit(EXIT_FAILURE);
 }
-token = strtok2(line, TOKEN_DELIMITERS, &tokenizer);
+token = strtok_r(line, TOKEN_DELIMITERS, &saveptr);
 while (token != NULL)
 {
 tokens[position] = token;
@@ -31,45 +30,42 @@ if (!tokens)
 {
 fprintf(stderr, "allocation error\n");
 exit(EXIT_FAILURE);
-}
-}
-token = strtok2(line, TOKEN_DELIMITERS, &tokenizer);
-
+}}
+token = strtok_r(NULL, TOKEN_DELIMITERS, &saveptr);
 }
 tokens[position] = NULL;
 return (tokens);
 }
 
 
-/**
-* strtok2 - Splits a string into an array of arguments.
-* @str: Pointer to a null-terminated string that contains the command line.
-* @delim: Pointer to a null-terminated string that contains the delimiters
-* used to split the string.
-* @state: Pointer to a Tokenizer struct that encapsulates the state of the
-* tokenizer.
-* Return: A pointer to the next token in the string, or NULL if there are
-* no more tokens.
-*/
-char *strtok2(char *str, const char *delim, Tokenizer *state)
+char *strtok_r(char *str, const char *delim, char **saveptr)
 {
+char *token;
+
 if (str != NULL)
 {
-state->last_str = str;
+*saveptr = str;
 }
-else if (state->last_token != NULL)
-{
-state->last_str = state->last_token + strlen(state->last_token) + 1;
-}
-else
+
+token = *saveptr;
+if (token == NULL)
 {
 return (NULL);
 }
-state->last_token = strchr(state->last_str, *delim);
-if (state->last_token != NULL)
+token += strspn(token, delim);
+
+if (*token == '\0')
 {
-*state->last_token = '\0';
-state->last_token++;
+*saveptr = NULL;
+return (NULL);
 }
-return (state->last_str);
+
+*saveptr = token + strcspn(token, delim);
+if (**saveptr != '\0')
+{
+**saveptr = '\0';
+(*saveptr)++;
+}
+
+return (token);
 }

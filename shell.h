@@ -9,12 +9,6 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-typedef struct Tokenizer
-{
-    char *last_token;
-    char *last_str;
-    struct Tokenizer *next;
-} Tokenizer;
 
 
 
@@ -41,6 +35,6 @@ char *get_command_path(char *command);
 void print_environment(void);
 int unset_environment_variable(char **args);
 int set_environment_variable(char **args);
-char *strtok2(char *str, const char *delim, Tokenizer *state);
+char *strtok_r(char *str, const char *delim, char **saveptr);
 
 #endif /* SHELL_H */
