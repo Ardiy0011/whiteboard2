@@ -9,6 +9,7 @@
 */
 char **split_line(char *line)
 {
+int i = 0;
 char *token;
 char **tokens = malloc(sizeof(char *) * MAX_ARGS);
 
@@ -18,7 +19,6 @@ fprintf(stderr, "Allocation error\n");
 exit(EXIT_FAILURE);
 }
 
-int i = 0;
 Tokenizer state = {NULL, NULL};
 while ((token = strtok2(line, TOKEN_DELIMITERS, &state)) != NULL)
 {
