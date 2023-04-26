@@ -9,7 +9,7 @@ char *custom_getline(void)
 {
 static char buf[BUFSIZE];
 static char *bufp = buf;
-static int n = 0;
+int n = 0;
 int i = 0;
 char c, *line;
 
