@@ -24,12 +24,6 @@ while ((token = strtok2(line, TOKEN_DELIMITERS, &state)) != NULL)
 {
 tokens[i] = token;
 i++;
-
-if (i >= MAX_ARGS)
-{
-fprintf(stderr, "Too many arguments\n");
-exit(EXIT_FAILURE);
-}
 }
 tokens[i] = NULL;
 return (tokens);
