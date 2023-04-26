@@ -9,10 +9,11 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-typedef struct
+typedef struct Tokenizer
 {
     char *last_token;
     char *last_str;
+    struct Tokenizer *next;
 } Tokenizer;
 
 

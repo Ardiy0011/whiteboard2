@@ -12,12 +12,13 @@ char **split_line(char *line)
 int bufsize = TOKEN_BUFSIZE, position = 0;
 char **tokens = malloc(bufsize * sizeof(char *));
 char *token;
+Tokenizer tokenizer = {0};
 if (!tokens)
 {
 fprintf(stderr, "allocation error\n");
 exit(EXIT_FAILURE);
 }
-token = strtok2(line, TOKEN_DELIMITERS, &Tokenizer);
+token = strtok2(line, TOKEN_DELIMITERS, &tokenizer);
 while (token != NULL)
 {
 tokens[position] = token;
@@ -32,7 +33,8 @@ fprintf(stderr, "allocation error\n");
 exit(EXIT_FAILURE);
 }
 }
-token = strtok2(line, TOKEN_DELIMITERS, &Tokenizer);
+token = strtok2(line, TOKEN_DELIMITERS, &tokenizer);
+
 }
 tokens[position] = NULL;
 return (tokens);
