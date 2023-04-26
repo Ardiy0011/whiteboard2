@@ -20,13 +20,7 @@
 extern char **environ;
 #define MAX_ARGS 64
 
-typedef struct info_s
-{
-        char *buffer;
-        char **argv;
-        size_t argc;
-        ssize_t read;
-} info_t;
+
 
 
 void prompt(void);
